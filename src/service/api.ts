@@ -37,6 +37,14 @@ interface PersonProps {
   known_for_department: string;
 }
 
+interface CastProps {
+  cast_id: number;
+  profile_path: string;
+  character: string;
+  name: string;
+  img: string;
+}
+
 export const fetchMovies = async () => {
   try {
     const { data } = await axios.get(nowPlayingUrl, {
@@ -161,5 +169,82 @@ export const fetchTopRatedMovie = async () => {
     return modifiedDate;
   } catch (err) {
     console.log('fetchPersons', err);
+  }
+};
+
+export const fetchMovieDetail = async (id: number) => {
+  try {
+    const { data } = await axios.get(`${movieUrl}/${id}`, {
+      params: {
+        api_key: apiKey,
+        language: 'pt-BR',
+      },
+    });
+
+    return data;
+  } catch (err) {
+    console.log('fetchMovieDetail', err);
+  }
+};
+
+export const fetchMovieVideo = async (id: number) => {
+  try {
+    const { data } = await axios.get(`${movieUrl}/${id}/videos`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+
+    return data.results[0];
+  } catch (err) {
+    console.log('fetchMovieVideo', err);
+  }
+};
+
+export const fetchCasts = async (id: number) => {
+  try {
+    const { data } = await axios.get(`${movieUrl}/${id}/credits`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+
+    const posterUrl = 'https://image.tmdb.org/t/p/w200';
+    const modifiedDate = data.cast.map((c: CastProps) => ({
+      id: c.cast_id,
+      character: c.character,
+      name: c.name,
+      img: posterUrl + c.profile_path,
+    }));
+
+    return modifiedDate;
+  } catch (err) {
+    console.log('fetchCasts', err);
+  }
+};
+
+export const fetchSimilarMovie = async (id: number) => {
+  try {
+    const { data } = await axios.get(`${movieUrl}/${id}/similar`, {
+      params: {
+        api_key: apiKey,
+        language: 'pt-BR',
+      },
+    });
+
+    const posterUrl = 'https://image.tmdb.org/t/p/original';
+    const modifiedDate = data.results.map((m: PosterUrlProps) => ({
+      id: m.id,
+      backPoster: posterUrl + m.backdrop_path,
+      popularity: m.popularity,
+      title: m.title,
+      poster: posterUrl + m.poster_path,
+      overview: m.overview,
+      rating: m.vote_average,
+    }));
+
+    return modifiedDate;
+  } catch (err) {
+    console.log('fetchSimilarMovie', err);
   }
 };

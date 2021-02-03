@@ -5,6 +5,7 @@ export const Container = styled.footer`
   padding: 40px 15px;
   opacity: 0.8;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   h2 {
@@ -23,6 +24,14 @@ export const FooterAbout = styled.div`
 
     & + p {
       margin-top: 13px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    p {
+      & + p {
+        margin-bottom: 20px;
+      }
     }
   }
 `;

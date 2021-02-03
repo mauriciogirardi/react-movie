@@ -84,4 +84,19 @@ export const ContentCustomSlider = styled.div`
     font-size: 30px;
     font-weight: bolder;
   }
+
+  svg {
+    position: absolute;
+    font-size: 70px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    :hover {
+      opacity: 0.8;
+    }
+  }
 `;
