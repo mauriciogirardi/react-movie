@@ -24,6 +24,8 @@ export default createGlobalStyle`
     font-family: 'Roboto', serif;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    background-color: #0b001e;
+    color: #fff;
   }
 
   input,button, select {
