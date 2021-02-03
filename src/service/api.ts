@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiKey = process.env.API_KEY;
+const apiKey = process.env.REACT_APP_API_KEY;
 const url = 'https://api.themoviedb.org/3';
 const nowPlayingUrl = `${url}/movie/now_playing`;
 const topRatedUrl = `${url}/movie/top_rated`;

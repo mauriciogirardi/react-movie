@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
+import Carousel, { settings } from 'components/Carousel';
+import Footer from 'components/Footer';
 
 import {
   fetchGenre,
@@ -9,9 +13,7 @@ import {
   fetchPersons,
   fetchTopRatedMovie,
 } from 'service/api';
-import Carousel, { settings } from 'components/Carousel';
 
-import { Link } from 'react-router-dom';
 import {
   Container,
   Genres,
@@ -138,6 +140,8 @@ const Home: React.FC = () => {
           ))}
         </TopRatedContainer>
       </TopRated>
+
+      <Footer />
     </Container>
   );
 };
