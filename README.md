@@ -28,7 +28,7 @@ Video
 
 ## 💇🏻‍♂️ Sobre o projeto
 
-Este projeto foi criado atravez de um test para front-endusando a api TMDB de filmes.
+Este projeto foi criado atravez de um test para front-end usando a api TMDB de filmes.
 
 ## 🚀 Tecnologias
 
